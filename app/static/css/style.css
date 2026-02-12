@@ -209,6 +209,26 @@ footer {
     font-size: 0.85rem;
 }
 
+/* ── Engine Badge ── */
+.engine-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+    padding: 0.4rem 1rem;
+    background: #e8f5e9;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #2e7d32;
+}
+.ollama-status {
+    font-size: 0.9rem;
+    cursor: help;
+}
+.ollama-status.ok { color: #2e7d32; }
+.ollama-status.error { color: #c62828; }
+
 /* ── Responsive ── */
 @media (max-width: 640px) {
     .text-area-group { flex-direction: column; }

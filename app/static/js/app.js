@@ -2,6 +2,36 @@ document.addEventListener("DOMContentLoaded", () => {
     const $ = (sel) => document.querySelector(sel);
     const $$ = (sel) => document.querySelectorAll(sel);
 
+    // ── Check Ollama status ──
+    function checkOllama() {
+        fetch("/api/ollama-status")
+            .then(r => r.json())
+            .then(data => {
+                const el = $("#ollama-status");
+                if (data.running && data.model_ready) {
+                    el.textContent = "✅";
+                    el.title = `Connected — model: ${data.model}`;
+                    el.className = "ollama-status ok";
+                } else if (data.running) {
+                    el.textContent = "⚠️";
+                    el.title = `Ollama running but model "${data.model}" not found. Run: ollama pull ${data.model}`;
+                    el.className = "ollama-status error";
+                } else {
+                    el.textContent = "❌";
+                    el.title = "Ollama not running. Start it with: ollama serve";
+                    el.className = "ollama-status error";
+                }
+            })
+            .catch(() => {
+                const el = $("#ollama-status");
+                el.textContent = "❌";
+                el.title = "Cannot check Ollama status";
+                el.className = "ollama-status error";
+            });
+    }
+    checkOllama();
+    setInterval(checkOllama, 30000);
+
     // ── Load languages ──
     fetch("/api/languages")
         .then(r => r.json())

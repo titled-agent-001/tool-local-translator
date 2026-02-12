@@ -4,7 +4,7 @@ Add new languages here — they'll automatically appear in the UI and translatio
 """
 
 # Supported languages: code -> display name
-# The code should match what deep-translator and OCR engines expect
+# The code is used by the OCR and translation engines
 LANGUAGES = {
     "auto": "Auto-Detect",
     "en": "English",
@@ -27,16 +27,9 @@ TESSERACT_LANG_MAP = {
     "ja": "jpn",
 }
 
-# Mapping from our codes to deep-translator codes (Google Translate backend)
-DEEP_TRANSLATOR_MAP = {
-    "en": "en",
-    "fr": "fr",
-    "de": "de",
-    "zh-TW": "zh-TW",
-    "zh-CN": "zh-CN",
-    "ko": "ko",
-    "ja": "ja",
-}
+# Ollama configuration
+OLLAMA_URL = "http://localhost:11434"
+OLLAMA_MODEL = "qwen2.5:7b"
 
 # CJK font fallback for PDF/image overlay (bundled or system)
 # Update these paths for your OS if needed

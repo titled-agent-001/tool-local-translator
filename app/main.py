@@ -13,7 +13,7 @@ from config import (
     LANGUAGES, UPLOAD_FOLDER, OUTPUT_FOLDER,
     MAX_CONTENT_LENGTH, ALLOWED_IMAGE_EXTENSIONS, ALLOWED_PDF_EXTENSIONS,
 )
-from app.modules.translator import translate_text
+from app.modules.translator import translate_text, check_ollama_status
 from app.modules.image_handler import translate_image
 from app.modules.pdf_handler import translate_pdf
 
@@ -39,6 +39,12 @@ def _allowed_file(filename: str, allowed: set) -> bool:
 @app.route("/")
 def index():
     return render_template("index.html")
+
+
+@app.route("/api/ollama-status", methods=["GET"])
+def api_ollama_status():
+    """Check Ollama connection and model status."""
+    return jsonify(check_ollama_status())
 
 
 @app.route("/api/languages", methods=["GET"])
