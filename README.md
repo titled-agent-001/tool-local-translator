@@ -30,7 +30,7 @@ A local translation web app for **images**, **PDFs**, and **text** with layout p
 
 ```bash
 # Clone
-git clone https://github.com/YOUR_USERNAME/tool-local-translator.git
+git clone https://github.com/titled-agent-001/tool-local-translator.git
 cd tool-local-translator
 
 # Create virtual environment
