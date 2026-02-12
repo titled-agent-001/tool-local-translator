@@ -78,6 +78,28 @@ Open **http://localhost:8080** in your browser.
 └── README.md
 ```
 
+## Troubleshooting
+
+### `NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+`
+
+This happens when the venv is created with an older system Python (e.g. 3.9) that ships with LibreSSL instead of OpenSSL.
+
+**Fix:**
+
+1. Install a newer Python via Homebrew:
+   ```bash
+   brew install python3
+   ```
+2. Delete the old virtual environment:
+   ```bash
+   rm -rf venv
+   ```
+3. Run `start.command` again — it will rebuild the venv with the newer Python.
+
+### Port 5000 already in use
+
+On macOS, **AirPlay Receiver** uses port 5000 by default. This app uses port **8080** to avoid the conflict. If 8080 is also taken, you can change the port in `app/main.py`.
+
 ## License
 
 MIT
