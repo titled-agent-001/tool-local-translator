@@ -1,10 +1,17 @@
 #!/bin/bash
 cd "$(dirname "$0")"
 
+# Prefer Homebrew Python, fall back to system python3
+if command -v /opt/homebrew/bin/python3 &>/dev/null; then
+    PYTHON=/opt/homebrew/bin/python3
+else
+    PYTHON=python3
+fi
+
 # Create virtual environment if it doesn't exist
 if [ ! -d "venv" ]; then
     echo "🔧 Creating virtual environment..."
-    python3 -m venv venv
+    $PYTHON -m venv venv
 fi
 
 # Activate virtual environment
