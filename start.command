@@ -23,6 +23,6 @@ pip install -q -r requirements.txt
 
 # Launch the app
 echo "🚀 Starting tool-local-translator..."
-echo "   Open http://localhost:5000 in your browser"
+echo "   Open http://localhost:8080 in your browser"
 echo ""
 python app/main.py
