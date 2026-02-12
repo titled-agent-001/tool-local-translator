@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Translator</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌐 Local Translator</h1>
+            <p class="subtitle">Translate images, PDFs, and text with layout preservation</p>
+        </header>
+
+        <!-- Mode Tabs -->
+        <div class="tabs">
+            <button class="tab active" data-mode="text">📝 Text</button>
+            <button class="tab" data-mode="image">🖼️ Image</button>
+            <button class="tab" data-mode="pdf">📄 PDF</button>
+        </div>
+
+        <!-- Language Selection -->
+        <div class="lang-bar">
+            <div class="lang-select">
+                <label for="source-lang">From</label>
+                <select id="source-lang"></select>
+            </div>
+            <button class="swap-btn" id="swap-langs" title="Swap languages">⇄</button>
+            <div class="lang-select">
+                <label for="target-lang">To</label>
+                <select id="target-lang"></select>
+            </div>
+        </div>
+
+        <!-- Text Mode -->
+        <div class="mode-panel active" id="panel-text">
+            <div class="text-area-group">
+                <div class="text-col">
+                    <textarea id="source-text" placeholder="Type or paste text here…" rows="8"></textarea>
+                </div>
+                <div class="text-col">
+                    <textarea id="result-text" placeholder="Translation will appear here…" rows="8" readonly></textarea>
+                </div>
+            </div>
+            <button class="btn primary" id="translate-text-btn">Translate</button>
+        </div>
+
+        <!-- Image Mode -->
+        <div class="mode-panel" id="panel-image">
+            <div class="upload-zone" id="image-drop-zone">
+                <input type="file" id="image-file" accept=".jpg,.jpeg,.png,.webp" hidden>
+                <p>📁 Drop an image here or <a href="#" id="image-browse">browse</a></p>
+                <p class="hint">JPG, PNG, WebP — max 50 MB</p>
+            </div>
+            <div class="file-name" id="image-file-name"></div>
+            <button class="btn primary" id="translate-image-btn" disabled>Translate Image</button>
+            <div class="result-area" id="image-result" style="display:none">
+                <h3>Result</h3>
+                <img id="image-result-img" src="" alt="Translated image">
+                <a id="image-download" class="btn secondary" href="#" download>⬇ Download</a>
+            </div>
+        </div>
+
+        <!-- PDF Mode -->
+        <div class="mode-panel" id="panel-pdf">
+            <div class="upload-zone" id="pdf-drop-zone">
+                <input type="file" id="pdf-file" accept=".pdf" hidden>
+                <p>📁 Drop a PDF here or <a href="#" id="pdf-browse">browse</a></p>
+                <p class="hint">PDF — max 50 MB</p>
+            </div>
+            <div class="file-name" id="pdf-file-name"></div>
+            <button class="btn primary" id="translate-pdf-btn" disabled>Translate PDF</button>
+            <div class="result-area" id="pdf-result" style="display:none">
+                <h3>Result</h3>
+                <a id="pdf-download" class="btn secondary" href="#" download>⬇ Download Translated PDF</a>
+            </div>
+        </div>
+
+        <!-- Status -->
+        <div class="status-bar" id="status-bar" style="display:none">
+            <div class="spinner"></div>
+            <span id="status-text">Processing…</span>
+        </div>
+
+        <footer>
+            <p>Open-source local translation tool · Powered by deep-translator & EasyOCR</p>
+        </footer>
+    </div>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
