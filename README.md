@@ -26,7 +26,13 @@ A local translation web app for **images**, **PDFs**, and **text** with layout p
 
 > Add more languages by editing `config.py` — they'll appear in the UI automatically.
 
-## Setup
+## Quick Start (macOS)
+
+Double-click **`start.command`** or drag it into Terminal — it handles everything (venv, deps, launch).
+
+Then open **http://localhost:8080** in your browser.
+
+## Manual Setup
 
 ```bash
 # Clone
@@ -44,7 +50,7 @@ pip install -r requirements.txt
 python app/main.py
 ```
 
-Open **http://localhost:5000** in your browser.
+Open **http://localhost:8080** in your browser.
 
 ## Tech Stack
 
