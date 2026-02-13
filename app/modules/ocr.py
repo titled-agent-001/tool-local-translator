@@ -39,7 +39,8 @@ def extract_text_from_image(image_path: str, source_lang: str = "auto") -> list[
     bbox is [[x1,y1],[x2,y2],[x3,y3],[x4,y4]]
     """
     if source_lang == "auto":
-        lang_codes = ["en"]  # Default; EasyOCR auto-detects within supported set
+        # Load broad language set so OCR can detect CJK + Latin text
+        lang_codes = ["en", "ch_tra", "ja", "ko"]
     else:
         code = EASYOCR_LANG_MAP.get(source_lang, "en")
         # EasyOCR often needs 'en' alongside CJK languages

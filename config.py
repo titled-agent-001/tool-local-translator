@@ -16,17 +16,6 @@ LANGUAGES = {
     "ja": "Japanese",
 }
 
-# Mapping from our language codes to Tesseract OCR language codes
-TESSERACT_LANG_MAP = {
-    "en": "eng",
-    "fr": "fra",
-    "de": "deu",
-    "zh-TW": "chi_tra",
-    "zh-CN": "chi_sim",
-    "ko": "kor",
-    "ja": "jpn",
-}
-
 # Ollama configuration
 OLLAMA_URL = "http://localhost:11434"
 OLLAMA_MODEL = "qwen2.5:7b"

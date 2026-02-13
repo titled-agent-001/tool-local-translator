@@ -147,5 +147,21 @@ def download_file(filename):
     return send_file(path, as_attachment=True, download_name=filename)
 
 
+def _cleanup_old_outputs(max_age_seconds: int = 3600):
+    """Remove output files older than max_age_seconds on startup."""
+    import time
+    now = time.time()
+    for fname in os.listdir(OUTPUT_FOLDER):
+        fpath = os.path.join(OUTPUT_FOLDER, fname)
+        try:
+            if os.path.isfile(fpath) and now - os.path.getmtime(fpath) > max_age_seconds:
+                os.remove(fpath)
+                logger.info("Cleaned up old output: %s", fname)
+        except OSError:
+            pass
+
+
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8080, debug=True)
+    _cleanup_old_outputs()
+    debug = os.environ.get("FLASK_DEBUG", "0") in ("1", "true", "yes")
+    app.run(host="0.0.0.0", port=8080, debug=debug)

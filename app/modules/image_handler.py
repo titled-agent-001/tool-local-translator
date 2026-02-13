@@ -123,7 +123,7 @@ def translate_image(
             bg_color = (255, 255, 255, 255)
 
         # Determine text color (contrast with background)
-        brightness = (avg_r * 299 + avg_g * 587 + avg_b * 114) / 1000 if 'avg_r' in dir() else 128
+        brightness = (bg_color[0] * 299 + bg_color[1] * 587 + bg_color[2] * 114) / 1000
         text_color = (0, 0, 0, 255) if brightness > 128 else (255, 255, 255, 255)
 
         # White-out original region
